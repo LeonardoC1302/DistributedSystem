@@ -24,7 +24,7 @@ public class LoadBalancer {
 
     private void checkNodeLoad() {
         for (Node node : nodes) {
-            if (node.getCurrentProcesses() > node.getMaxProcesses() * 0.8) { // Umbral de 80% de capacidad
+            if (node.getCurrentProcesses() > node.getMaxProcesses() * 0.8) {
                 redistributeProcesses(node);
             }
         }
@@ -33,17 +33,21 @@ public class LoadBalancer {
     private void redistributeProcesses(Node overloadedNode) {
         List<Process> processesToRedistribute = overloadedNode.getRunningProcesses();
         for (Process process : processesToRedistribute) {
-            boolean reassigned = false;
             for (Node node : nodes) {
                 if (node.getId() != overloadedNode.getId() && node.assignProcess(process)) {
                     overloadedNode.removeProcess(process);
-                    reassigned = true;
                     break;
                 }
             }
-            if (!reassigned) {
-                // No se pudo reasignar el proceso, quizás se deba notificar al usuario
-            }
         }
     }
+
+    public ProcessManager getProcessManager() {
+        return processManager;
+    }
+
+    public NodeCommunicator getNodeCommunicator() {
+        return nodeCommunicator;
+    }
+    
 }

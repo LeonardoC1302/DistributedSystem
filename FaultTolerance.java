@@ -9,6 +9,7 @@ public class FaultTolerance {
         this.nodeCommunicator = nodeCommunicator;
     }
 
+    // 
     public void monitorNodes() {
         while (true) {
             checkNodeStatus();
@@ -29,14 +30,12 @@ public class FaultTolerance {
     }
 
     private boolean isNodeActive(Node node) {
-        // Implementación de la lógica para comprobar si un nodo está activo
-        // (p. ej., enviar un ping y esperar una respuesta)
-        return true; // Simulando que todos los nodos están activos
+        return node.getActive();
     }
 
-    private void handleNodeFailure(Node failedNode) {
+    public void handleNodeFailure(Node failedNode) {
         nodes.remove(failedNode);
-        nodeCommunicator.handleNodeFailure(failedNode);
         System.out.println("Nodo " + failedNode.getId() + " ha fallado. Redistribuyendo procesos.");
+        nodeCommunicator.handleNodeFailure(failedNode);
     }
 }

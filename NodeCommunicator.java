@@ -40,7 +40,14 @@ public class NodeCommunicator {
     }
 
     private Node findLeastLoadedNode() {
-        // Implementación similar a la del ProcessManager
-        return new Node(null, 0);
+        Node leastLoadedNode = null;
+        int minProcesses = Integer.MAX_VALUE;
+        for (Node node : nodes) {
+            if (node.getCurrentProcesses() < minProcesses) {
+                leastLoadedNode = node;
+                minProcesses = node.getCurrentProcesses();
+            }
+        }   
+        return leastLoadedNode;
     }
 }

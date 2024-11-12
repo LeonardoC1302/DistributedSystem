@@ -25,14 +25,14 @@ public class Process {
         this.assignedNode = node;
     }
 
-    public void execute() {
-        // Lógica de ejecución del proceso
+    public void execute(ProcessManager processManager) {
         System.out.println("Ejecutando proceso " + id + " en el nodo " + assignedNode.getId());
         try {
             Thread.sleep(duration * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Proceso " + id + " finalizado");
+        processManager.endProcess(this);
+        processManager.reassignWaitingProcesses();
     }
 }

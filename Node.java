@@ -9,6 +9,7 @@ public class Node {
     private int currentProcesses;
     private Map<String, Resource> resources;
     private List<Process> runningProcesses;
+    private boolean active = true;
 
     public Node(String id, int maxProcesses) {
         this.id = id;
@@ -66,5 +67,16 @@ public class Node {
     public void removeProcess(Process process) {
         runningProcesses.remove(process);
         currentProcesses--;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public boolean isProcessRunning(Process process) {
+        if (runningProcesses == null || process == null) {
+            return false;
+        }
+        return runningProcesses.contains(process);
     }
 }
