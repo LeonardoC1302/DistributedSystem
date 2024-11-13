@@ -1,6 +1,11 @@
 # Simulación de sistema distribuido
 Este proyecto es una simulación de un sistema operativo distribuido, diseñado para gestionar recursos y procesos en un entorno simulado con múltiples nodos interconectados. La implementación está orientada a la gestión eficiente de la carga, la tolerancia a fallos y la comunicación entre nodos.
 
+## Project Contributors
+- Leonardo Céspedes Tenorio - [LeonardoC1302](https://github.com/LeonardoC1302) - 2022080602
+- Kevin Chang Chang - [Swonk888](https://github.com/Swonk888) - 2022039050
+- Frankmin Feng Zhong - [frank-the-tankk](https://github.com/frank-the-tankk) - 2022089248
+
 ## Arquitectura del Sistema
 El sistema se compone de varios componentes clave:
 - DistributedSystem: Actúa como el controlador principal del sistema, gestionando la coordinación y la comunicación entre los diferentes nodos.
